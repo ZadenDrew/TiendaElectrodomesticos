@@ -1,12 +1,13 @@
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
+from tablaStock import TablaStock
 from sqlite3 import dbapi2
+
 
 class Stock():
     def __init__(self):
         """
-
         :rtype: object
         """
         builder = Gtk.Builder()
@@ -15,12 +16,13 @@ class Stock():
 
         contWindow.show_all()
 
+
         self.bbdd = dbapi2.connect("TiendaElectrodomesticos.bd")
         self.cursor = self.bbdd.cursor()
 
-        """
-        self.cursor.execute("create table facturas(numFactura integer primary key AUTOINCREMENT,codCliente text,codProducto text,cantidade integer)")
-        self.cursor.execute("create table productos(codproducto text primary key,descripcion text,modelo text,precio integer,unidades integer)") """
+
+        """ 
+        self.cursor.execute("create table productos(codproducto text primary key,descripcion text,modelo text,precio integer,unidades integer)")"""
 
 
         boxStock = builder.get_object("boxStock")
@@ -36,23 +38,22 @@ class Stock():
         self.txtViewPrecio =  builder.get_object("txtViewPrecio")
         self.txtViewUnidades = builder.get_object("txtViewUnidades")
 
-        self.comboBoxIdBusca = builder.get_object("comboBoxIdBusca")
-        vista = builder.get_object("treeVista")
+
 
         btnAñadir = builder.get_object("btnAñadir")
         btnBuscar = builder.get_object("btnBuscar")
 
-        btnAñadir.connect("clicked",self.on_btnAñadir_cliked)
-
+        btnAñadir.connect("clicked",self.on_btnAñadir_clicked)
+        btnBuscar.connect("clicked",self.on_btnBuscar_clicked)
 
         cursorConsultaProductos = self.cursor.execute("select codproducto from productos")
         listaProductos = list()
 
         for codproducto in cursorConsultaProductos:
-            n=0
+            n = 0
             if codproducto[n] not in listaProductos:
                 listaProductos.append(str(codproducto[n]))
-                n=n+1
+                n = n + 1
         print(listaProductos)
 
         self.cursor.execute("select codproducto from productos")
@@ -63,34 +64,18 @@ class Stock():
 
         self.comboBoxId.connect("changed",self.on_seleccion_changed)
 
+        self.cursor.execute("select descripcion,modelo,precio,unidades from productos where codproducto = ?",
+                            (str(self.comboBoxId.get_active_text()),))
 
 
 
-        celdaText = Gtk.CellRendererText()
-        columnaDescripcion = Gtk.TreeViewColumn('Descripcion', celdaText, text=0)
-        vista.append_column(columnaDescripcion)
-
-        celdaText2 = Gtk.CellRendererText(xalign=1)
-        columnaModelo = Gtk.TreeViewColumn('Modelo', celdaText2, text=1)
-        vista.append_column(columnaModelo)
-
-        celdaText3 = Gtk.CellRendererText()
-        columnaPrecio = Gtk.TreeViewColumn('Precio', celdaText3, text=2)
-        vista.append_column(columnaPrecio)
-
-        celdaText4 = Gtk.CellRendererText()
-        columnaUnidades = Gtk.TreeViewColumn('Unidades', celdaText4, text=3)
-        vista.append_column(columnaUnidades)
-
-        boxStock.pack_start(vista,True,True,0)
-
-    def on_btnAñadir_cliked(self,boton):
+    def on_btnAñadir_clicked(self,boton):
 
         self.cursor.execute(" insert into productos values(?,?,?,?,?) ",
                             (self.entryId.get_text(),
                             self.entryTipo.get_text(),
                             self.entryModelo.get_text(),
-                            self.entryPrecio.get_text(),
+                            int(self.entryPrecio.get_text()),
                             int(self.entryUnidades.get_text())
 
                                 )
@@ -105,23 +90,32 @@ class Stock():
         self.entryPrecio.set_text(" ")
         self.entryUnidades.set_text(" ")
 
-
     def on_seleccion_changed(self,boton):
-        self.cursor.execute("select descripcion,modelo,precio,unidades from productos where codproducto ='" +
-                            str(self.comoBoxId.get_active_text()) +"'")
+        self.cursor.execute("select descripcion,modelo,precio,unidades from productos where codproducto = ?",(str(self.comboBoxId.get_active_text()),))
+
         self.lista =Gtk.ListStore(str,str,int,int)
 
         datos = self.cursor.fetchone()
-        print(datos)
+
 
         descripcion = datos[0]
-        self.txtViewTipo.set_text(datos[0])
         modelo = datos[1]
         precio = datos[2]
         unidades = datos[3]
-        self.datos.append([descripcion,modelo,precio,unidades])
-        print(self.datos)
-        self.vista.set_lista(self.lista)
+        self.lista.append([descripcion,modelo,precio,unidades])
+        print(datos)
+        #self.vista.set_model(self.lista)
+
+    def on_btnBuscar_clicked(self, boton):
+        """
+        Método que llama al apartado de clientes
+        :param boton: Parametro que recibe el metodo
+        :return: None
+        """
+
+        TablaStock()
+
+
 
 if __name__ == "__main__":
     Stock()

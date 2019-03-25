@@ -8,7 +8,7 @@
       <placeholder/>
     </child>
     <child>
-      <object class="GtkBox" id="boxStock">
+      <object class="GtkBox" id="boxCliente">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
@@ -64,16 +64,6 @@
               <packing>
                 <property name="left_attach">0</property>
                 <property name="top_attach">3</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkComboBoxText" id="comboBoxIdClienteBusca">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">5</property>
               </packing>
             </child>
             <child>
@@ -236,11 +226,15 @@
                 <property name="receives_default">True</property>
                 <property name="use_stock">True</property>
                 <property name="always_show_image">True</property>
+                <signal name="clicked" handler="on_btnBuscar_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">5</property>
                 <property name="top_attach">5</property>
               </packing>
+            </child>
+            <child>
+              <placeholder/>
             </child>
             <child>
               <placeholder/>
@@ -301,32 +295,10 @@
           </packing>
         </child>
         <child>
-          <object class="GtkTreeView">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <child internal-child="selection">
-              <object class="GtkTreeSelection"/>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
-          </packing>
+          <placeholder/>
         </child>
         <child>
-          <object class="GtkTreeView" id="treeBusqueda">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <child internal-child="selection">
-              <object class="GtkTreeSelection"/>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">3</property>
-          </packing>
+          <placeholder/>
         </child>
       </object>
     </child>

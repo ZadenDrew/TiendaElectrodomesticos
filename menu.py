@@ -3,6 +3,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 from stock import Stock
 from cliente import Cliente
+from venta import Venta
 
 class Menu():
     def __init__(self):
@@ -41,6 +42,16 @@ class Menu():
 
 
         Cliente()
+
+    def on_btnventa_clicked(self, boton):
+        """
+        Método que llama al apartado de clientes
+        :param boton: Parametro que recibe el metodo
+        :return: None
+        """
+
+        Venta()
+
 
 if __name__ == "__main__":
     Menu()

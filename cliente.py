@@ -1,6 +1,7 @@
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
+from tablaCliente import TablaCliente
 from sqlite3 import dbapi2
 
 class Cliente():
@@ -34,7 +35,8 @@ class Cliente():
         btnAñadir = builder.get_object("btnAñadir")
         btnBuscar = builder.get_object("btnBuscar")
 
-        btnAñadir.connect("clicked", self.on_btnAñadir_cliked)
+        btnAñadir.connect("clicked", self.on_btnAñadir_clicked)
+        btnBuscar.connect("clicked", self.on_btnBuscar_clicked)
 
         cursorConsultaClientes = self.cursor.execute("select dni from clientes")
         listaClientes = list()
@@ -54,7 +56,13 @@ class Cliente():
 
         self.comboBoxIdCliente.connect("changed", self.on_seleccion_changed)
 
-    def on_btnAñadir_cliked(self, boton):
+        self.cursor.execute("select descripcion,modelo,precio,unidades from productos where codproducto = ?",
+                            (str(self.comboBoxIdCliente.get_active_text()),))
+
+        self.lista = Gtk.ListStore(str, str, str, str)
+        self.vista = Gtk.TreeView()
+
+    def on_btnAñadir_clicked(self, boton):
 
         self.cursor.execute(" insert into clientes values(?,?,?,?,?) ",
                             (self.entryDni.get_text(),
@@ -74,21 +82,29 @@ class Cliente():
         self.entryDireccion.set_text(" ")
 
     def on_seleccion_changed(self, boton):
-        self.cursor.execute("select nombre,apellidos,nacimiento,direccion from clientes where dni ='" +
-                            str(self.comoBoxIdCliente.get_active_text()) + "'")
+        self.cursor.execute("select nombre,apellidos,nacimiento,direccion from clientes where dni = ?",(str(self.comboBoxIdCliente.get_active_text()),))
+
         self.lista = Gtk.ListStore(str, str, str, str)
 
         datos = self.cursor.fetchone()
-        print(datos)
+
 
         nombre = datos[0]
-        self.txtViewTipo.set_text(datos[0])
         apellidos = datos[1]
         nacimiento = datos[2]
         direccion = datos[3]
-        self.datos.append([nombre,apellidos,nacimiento,direccion])
-        print(self.datos)
-        self.vista.set_lista(self.lista)
+        self.lista.append([nombre,apellidos,nacimiento,direccion])
+        print(datos)
+        #self.vista.set_model(self.lista)
+
+    def on_btnBuscar_clicked(self, boton):
+        """
+        Método que llama al apartado de clientes
+        :param boton: Parametro que recibe el metodo
+        :return: None
+        """
+
+        TablaCliente()
 
 if __name__ == "__main__":
     Cliente()
