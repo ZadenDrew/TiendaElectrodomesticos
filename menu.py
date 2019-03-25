@@ -21,6 +21,7 @@ class Menu():
 
         btnstock.connect("clicked", self.on_btnstock_clicked)
         btncliente.connect("clicked", self.on_btncliente_clicked)
+        btnventa.connect("clicked", self.on_btnventa_clicked)
 
     def on_btnstock_clicked(self, boton):
         """

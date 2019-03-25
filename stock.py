@@ -21,8 +21,8 @@ class Stock():
         self.cursor = self.bbdd.cursor()
 
 
-        """ 
-        self.cursor.execute("create table productos(codproducto text primary key,descripcion text,modelo text,precio integer,unidades integer)")"""
+
+        """self.cursor.execute("create table productos(codproducto text primary key,descripcion text,modelo text,precio integer,unidades integer)")"""
 
 
         boxStock = builder.get_object("boxStock")
