@@ -115,7 +115,7 @@ class Venta():
             taboa = Table(factura, colWidths=80, rowHeights=30)
 
             taboa.setStyle(TableStyle([
-                ('TEXTCOLOR', (0, 0), (-1, 2), colors.blue),
+                ('TEXTCOLOR', (0, 0), (-1, 3), colors.blue),
 
                 ('TEXTCOLOR', (0, 4), (-1, -1), colors.green),
 
@@ -125,9 +125,9 @@ class Venta():
 
                 ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
 
-                ('BOX', (0, 0), (-1, 2), 1, colors.black),
+                ('BOX', (0, 0), (-1, 4), 2, colors.black),
 
-                ('BOX', (0, 4), (-1, -2), 1, colors.black),
+                ('BOX', (0, 4), (-1, -4), 1, colors.black),
 
                 ('INNERGRID', (0, 4), (-1, -2), 0.5, colors.grey),
 
