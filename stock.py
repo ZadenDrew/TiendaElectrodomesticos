@@ -24,7 +24,6 @@ class Stock():
 
         """self.cursor.execute("create table productos(codproducto text primary key,descripcion text,modelo text,precio integer,unidades integer)")"""
 
-
         boxStock = builder.get_object("boxStock")
         self.entryId = builder.get_object("entryId")
         self.entryTipo = builder.get_object("entryTipo")

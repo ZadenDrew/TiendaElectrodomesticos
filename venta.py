@@ -50,6 +50,7 @@ class Venta():
 
     def creaFactura(self):
 
+        global cantidade,nombre,apellidos,direccion,descripcion,precio
         self.numFactura = self.numFactura
         self.bbdd = dbapi2.connect("TiendaElectrodomesticos.bd")
         self.cursor = self.bbdd.cursor()
@@ -66,43 +67,48 @@ class Venta():
             codProducto=elementoFactura[1]
             cantidade =elementoFactura[2]
         lconsultaDetalleFactura.append([elementoFactura[0],elementoFactura[1],elementoFactura[2]])
-
+        print(codCliente,codProducto,cantidade)
 
         cursorConsultaFactura = self.cursor.execute("select nombre,apellidos,direccion from clientes where dni = ?", (codCliente,))
-
+        rexistroCliente = cursorConsultaFactura.fetchone()
         consultaFactura = []
         for rexistroCliente in cursorConsultaFactura:
             nombre=rexistroCliente[0]
             apellidos=rexistroCliente[1]
             direccion = rexistroCliente[2]
         consultaFactura.append([rexistroCliente[0],rexistroCliente[1],rexistroCliente[2]])
-
+        print(rexistroCliente[0],rexistroCliente[1],rexistroCliente[2])
 
         detalleFactura.append(['Dni Cliente :', codCliente])
-        detalleFactura.append(['Nombre :', nombre])
-        detalleFactura.append(['Apellidos :', apellidos])
-        detalleFactura.append(['Direccion :', direccion])
-        detalleFactura.append(["","","","",""])
-        detalleFactura.append(["Codigo producto", "Descripcion", "Cantidade", "Precio unitario", "precio"])
-        prezoTotal = 0
+        detalleFactura.append(['Nombre :', rexistroCliente[0]])
+        detalleFactura.append(['Apellidos :', rexistroCliente[1]])
+        detalleFactura.append(['Direccion :', rexistroCliente[2]])
+        detalleFactura.append(["Codigo producto :",codProducto, "Cantidade :",cantidade])
 
-        cursorConsultaProducto = self.cursor.execute("select descripcion,precio from productos where codProducto = ?",(codProducto))
+
+        """cursorConsultaProducto = self.cursor.execute("select descripcion,precio from productos where codproducto = ?",(codProducto,))
+        elemento = cursorConsultaProducto.fetchone()
+        consultaFacturaPrecio = []
+        prezo = 0
         for elemento in cursorConsultaProducto:
+            descripcion =elemento[0]
+            precio= elemento[1]
+            print(elementoFactura[1])
             prezo = elemento[1] * elementoFactura[2]
-            detalleFactura.append(
-                    [elemento[0], elemento[1], elementoFactura[2], prezo])
+            print(elemento[1])
+        detalleFactura.append(["Descripcion :",elemento[0],"Precio unitario:", elemento[1], prezo])
+        consultaFacturaPrecio.append([elemento[0], elemento[1]])
+        prezoTotal = 0
+        prezoTotal = prezo"""
+        print(detalleFactura)
 
-            prezoTotal = prezoTotal + prezo
-            print(detalleFactura)
-
-            detalleFactura.append(["","","","Prezo total:",prezoTotal])
-            facturas.append(list(detalleFactura))
-            detalleFactura.clear()
+        facturas.append(list(detalleFactura))
+        detalleFactura.clear()
 
         self.cursor.close()
         self.bbdd.close()
 
-        doc = SimpleDocTemplate("exemploFacturas.pdf", pagesize=A4)
+        doc = SimpleDocTemplate("Facturas.pdf", pagesize=A4)
         guion = []
 
         for factura in facturas:
@@ -138,8 +144,8 @@ class Venta():
 
         self.cursor.execute(" insert into facturas values(?,?,?,?) ",
                             (int (self.entryNum.get_text()),
-                             self.entryStock.get_text(),
                              self.entryCliente.get_text(),
+                             self.entryStock.get_text(),
                              self.entryCantidad.get_text(),
 
 

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f351dea8-af5f-4210-bb6d-c5e823ed7894" name="Default Changelist" comment="second commit">
+    <list default="true" id="f351dea8-af5f-4210-bb6d-c5e823ed7894" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TiendaElectrodomesticos.bd" beforeDir="false" afterPath="$PROJECT_DIR$/TiendaElectrodomesticos.bd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venta.glade" beforeDir="false" afterPath="$PROJECT_DIR$/venta.glade" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venta.py" beforeDir="false" afterPath="$PROJECT_DIR$/venta.py" afterDir="false" />
@@ -16,9 +15,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/tiendaElectrodomesticos$venta.coverage" NAME="venta Coverage Results" MODIFIED="1553553328383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/tiendaElectrodomesticos$cliente.coverage" NAME="cliente Coverage Results" MODIFIED="1553533524008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/tiendaElectrodomesticos$stock.coverage" NAME="stock Coverage Results" MODIFIED="1553539324884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/tiendaElectrodomesticos$venta.coverage" NAME="venta Coverage Results" MODIFIED="1553623837480" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/tiendaElectrodomesticos$cliente.coverage" NAME="cliente Coverage Results" MODIFIED="1553616673142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/tiendaElectrodomesticos$stock.coverage" NAME="stock Coverage Results" MODIFIED="1553616545801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/tiendaElectrodomesticos$exemploComboBoxText.coverage" NAME="exemploComboBoxText Coverage Results" MODIFIED="1553531108821" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/tiendaElectrodomesticos$tablaStock.coverage" NAME="tablaStock Coverage Results" MODIFIED="1553532163243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/tiendaElectrodomesticos$menu.coverage" NAME="menu Coverage Results" MODIFIED="1553547708995" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -42,8 +41,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/venta.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="681">
-              <caret line="132" column="8" selection-start-line="132" selection-start-column="8" selection-end-line="132" selection-end-column="8" />
+            <state relative-caret-position="-238">
+              <caret line="85" column="87" selection-start-line="85" selection-start-column="87" selection-end-line="85" selection-end-column="87" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -72,7 +71,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stock.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
+            <state relative-caret-position="105">
               <caret line="24" column="150" selection-start-line="24" selection-start-column="150" selection-end-line="24" selection-end-column="150" />
             </state>
           </provider>
@@ -88,9 +87,9 @@
       <list>
         <option value="$PROJECT_DIR$/stock.glade" />
         <option value="$PROJECT_DIR$/tablaCliente.py" />
-        <option value="$PROJECT_DIR$/cliente.py" />
-        <option value="$PROJECT_DIR$/stock.py" />
         <option value="$PROJECT_DIR$/menu.py" />
+        <option value="$PROJECT_DIR$/stock.py" />
+        <option value="$PROJECT_DIR$/cliente.py" />
         <option value="$PROJECT_DIR$/venta.py" />
       </list>
     </option>
@@ -107,6 +106,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="tiendaElectrodomesticos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tiendaElectrodomesticos" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Course" />
     </panes>
   </component>
@@ -242,9 +253,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.venta" />
-        <item itemvalue="Python.menu" />
-        <item itemvalue="Python.stock" />
         <item itemvalue="Python.cliente" />
+        <item itemvalue="Python.stock" />
+        <item itemvalue="Python.menu" />
         <item itemvalue="Python.tablaStock" />
       </list>
     </recent_temporary>
@@ -267,7 +278,8 @@
       <workItem from="1553465942687" duration="4041000" />
       <workItem from="1553529061975" duration="6268000" />
       <workItem from="1553538875227" duration="8835000" />
-      <workItem from="1553550842931" duration="2544000" />
+      <workItem from="1553550842931" duration="2780000" />
+      <workItem from="1553616423444" duration="6262000" />
     </task>
     <task id="LOCAL-00001" summary="second commit">
       <created>1553535027114</created>
@@ -276,11 +288,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553535027114</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="factura">
+      <created>1553553463871</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1553553463872</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40084000" />
+    <option name="totallyTimeSpent" value="46582000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -293,14 +312,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="77" y="27" width="1279" height="631" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2814274" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2814274" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49310625" visible="true" weight="0.26294822" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49310625" visible="true" weight="0.26294822" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -348,7 +366,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="second commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="second commit" />
+    <MESSAGE value="factura" />
+    <option name="LAST_COMMIT_MESSAGE" value="factura" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/stock.glade">
@@ -372,16 +391,6 @@
     <entry file="file://$PROJECT_DIR$/tablaStock.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/venta.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="681">
-          <caret line="132" column="8" selection-start-line="132" selection-start-column="8" selection-end-line="132" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/menu.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -398,8 +407,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stock.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="105">
           <caret line="24" column="150" selection-start-line="24" selection-start-column="150" selection-end-line="24" selection-end-column="150" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venta.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-238">
+          <caret line="85" column="87" selection-start-line="85" selection-start-column="87" selection-end-line="85" selection-end-column="87" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
