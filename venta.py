@@ -42,16 +42,9 @@ class Venta():
 
     def on_btnVenta_clicked(self, boton):
 
-
-         self.numFactura = self.comboBoxNumFactura.get_active_text()
-
-         self.creaFactura()
-
-
-    def creaFactura(self):
-
         global cantidade,nombre,apellidos,direccion,descripcion,precio
-        self.numFactura = self.numFactura
+        self.numFactura = self.comboBoxNumFactura.get_active_text()
+        print(self.numFactura)
         self.bbdd = dbapi2.connect("TiendaElectrodomesticos.bd")
         self.cursor = self.bbdd.cursor()
 
@@ -74,8 +67,10 @@ class Venta():
         consultaFactura = []
         for rexistroCliente in cursorConsultaFactura:
             nombre=rexistroCliente[0]
+            print (nombre)
             apellidos=rexistroCliente[1]
             direccion = rexistroCliente[2]
+
         consultaFactura.append([rexistroCliente[0],rexistroCliente[1],rexistroCliente[2]])
         print(rexistroCliente[0],rexistroCliente[1],rexistroCliente[2])
 

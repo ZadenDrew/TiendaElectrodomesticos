@@ -1,6 +1,9 @@
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
+from reportlab.platypus import (SimpleDocTemplate, PageBreak, Image, Spacer, Paragraph, TableStyle, Table)
+from reportlab.lib.pagesizes import A4
+from reportlab.lib import colors
 from tablaCliente import TablaCliente
 from sqlite3 import dbapi2
 
@@ -34,9 +37,11 @@ class Cliente():
 
         btnAñadir = builder.get_object("btnAñadir")
         btnBuscar = builder.get_object("btnBuscar")
+        btnInformeCliente = builder.get_object("btnInformeCliente")
 
         btnAñadir.connect("clicked", self.on_btnAñadir_clicked)
         btnBuscar.connect("clicked", self.on_btnBuscar_clicked)
+        btnInformeCliente.connect("clicked", self.on_btnInformeCliente_clicked)
 
         cursorConsultaClientes = self.cursor.execute("select dni from clientes")
         listaClientes = list()
@@ -81,6 +86,9 @@ class Cliente():
         self.entryNacimiento.set_text(" ")
         self.entryDireccion.set_text(" ")
 
+
+
+
     def on_seleccion_changed(self, boton):
         self.cursor.execute("select nombre,apellidos,nacimiento,direccion from clientes where dni = ?",(str(self.comboBoxIdCliente.get_active_text()),))
 
@@ -96,6 +104,74 @@ class Cliente():
         self.lista.append([nombre,apellidos,nacimiento,direccion])
         print(datos)
         #self.vista.set_model(self.lista)
+
+    def on_btnInformeCliente_clicked(self, boton):
+
+        global dni,nombre,apellidos,nacimiento,direccion
+        dni = self.comboBoxIdCliente.get_active_text()
+        print(dni)
+        self.bbdd = dbapi2.connect("TiendaElectrodomesticos.bd")
+        self.cursor = self.bbdd.cursor()
+
+        detalleCliente = []
+        cursorConsultaCliente = self.cursor.execute("select nombre,apellidos,nacimiento,direccion from clientes where dni = ?",
+                                                    (dni,))
+        rexistroCliente = cursorConsultaCliente.fetchone()
+        consultaCliente = []
+        listaclientes = []
+        for rexistroCliente in cursorConsultaCliente:
+            nombre = rexistroCliente[0]
+            apellidos = rexistroCliente[1]
+            nacimiento = rexistroCliente[2]
+            direccion = rexistroCliente[3]
+
+        consultaCliente.append([rexistroCliente[0], rexistroCliente[1], rexistroCliente[2], rexistroCliente[3]])
+        print(dni,rexistroCliente[0], rexistroCliente[1], rexistroCliente[2],rexistroCliente[3])
+
+
+
+        detalleCliente.append(['Nombre :', rexistroCliente[0]])
+        detalleCliente.append(['Apellidos :', rexistroCliente[1]])
+        detalleCliente.append(['Nacemento :', rexistroCliente[2]])
+        detalleCliente.append(['Direccion :', rexistroCliente[3]])
+
+        listaclientes.append(list(detalleCliente))
+        consultaCliente.clear()
+
+        self.cursor.close()
+        self.bbdd.close()
+
+        doc = SimpleDocTemplate("Clientes.pdf", pagesize=A4)
+        guion = []
+
+        for clientes in listaclientes:
+            taboa = Table(clientes, colWidths=80, rowHeights=30)
+
+            taboa.setStyle(TableStyle([
+            ('TEXTCOLOR', (0, 0), (-1, 3), colors.blue),
+
+            ('TEXTCOLOR', (0, 4), (-1, -1), colors.green),
+
+            ('BACKGROUND', (0, 4), (-1, -1), colors.lightcyan),
+
+            ('ALIGN', (2, 5), (-1, -1), 'RIGHT'),
+
+            ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+
+            ('BOX', (0, 0), (-1, 4), 2, colors.black),
+
+            ('BOX', (0, 3), (-1, -4), 1, colors.black),
+
+            ('INNERGRID', (0, 4), (-1, -2), 0.5, colors.grey),
+
+        ]))
+        guion.append(taboa)
+        guion.append(Spacer(0, 20))
+        guion.append(PageBreak())
+
+        doc.build(guion)
+
+
 
     def on_btnBuscar_clicked(self, boton):
         """
