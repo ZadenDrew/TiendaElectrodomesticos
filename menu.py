@@ -7,7 +7,9 @@ from venta import Venta
 
 class Menu():
     def __init__(self):
-
+        """
+        :rtype: object
+        """
 
         builder = Gtk.Builder()
         builder.add_from_file("./menu.glade")

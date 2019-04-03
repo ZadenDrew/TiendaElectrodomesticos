@@ -70,6 +70,13 @@ class Stock():
 
     def on_btnAñadir_clicked(self,boton):
 
+        """
+        Método que recoge valores introducidos en los entry para almacenarlos en la tabla productos
+        de nuestra base de datos sqlite
+        :param boton: Parametro que recibe el metodo
+        :return: None
+        """
+
         self.cursor.execute(" insert into productos values(?,?,?,?,?) ",
                             (self.entryId.get_text(),
                             self.entryTipo.get_text(),
@@ -90,6 +97,12 @@ class Stock():
         self.entryUnidades.set_text(" ")
 
     def on_seleccion_changed(self,boton):
+
+        """
+        Método que selecciona de la tabla productos sus valores para almacenarlos en una Gtk.ListStore
+        :param boton: Parametro que recibe el metodo
+        :return: None
+        """
         self.cursor.execute("select descripcion,modelo,precio,unidades from productos where codproducto = ?",(str(self.comboBoxId.get_active_text()),))
 
         self.lista =Gtk.ListStore(str,str,int,int)
@@ -107,7 +120,7 @@ class Stock():
 
     def on_btnBuscar_clicked(self, boton):
         """
-        Método que llama al apartado de clientes
+        Método que llama al apartado de stock
         :param boton: Parametro que recibe el metodo
         :return: None
         """

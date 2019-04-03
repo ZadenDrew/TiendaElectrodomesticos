@@ -6,6 +6,9 @@ from sqlite3 import dbapi2
 
 class TablaStock(Gtk.Window):
     def __init__(self):
+        """
+        :rtype: object
+        """
 
         Gtk.Window.__init__(self, title="TablaStock")
 

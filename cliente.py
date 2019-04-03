@@ -9,6 +9,10 @@ from sqlite3 import dbapi2
 
 class Cliente():
     def __init__(self):
+        """
+        :rtype: object
+        """
+
         builder = Gtk.Builder()
         builder.add_from_file("./cliente.glade")
         contWindow = builder.get_object("ventanaCliente")
@@ -69,6 +73,13 @@ class Cliente():
 
     def on_btnAñadir_clicked(self, boton):
 
+        """
+       Método que recoge valores introducidos en los entry para almacenarlos en la tabla clientes
+       de nuestra base de datos sqlite
+       :param boton: Parametro que recibe el metodo
+       :return: None
+       """
+
         self.cursor.execute(" insert into clientes values(?,?,?,?,?) ",
                             (self.entryDni.get_text(),
                              self.entryNombre.get_text(),
@@ -90,6 +101,13 @@ class Cliente():
 
 
     def on_seleccion_changed(self, boton):
+
+        """
+        Método que selecciona de la tabla productos sus valores para almacenarlos en una Gtk.ListStore
+        :param boton: Parametro que recibe el metodo
+        :return: None
+        """
+
         self.cursor.execute("select nombre,apellidos,nacimiento,direccion from clientes where dni = ?",(str(self.comboBoxIdCliente.get_active_text()),))
 
         self.lista = Gtk.ListStore(str, str, str, str)
@@ -106,6 +124,13 @@ class Cliente():
         #self.vista.set_model(self.lista)
 
     def on_btnInformeCliente_clicked(self, boton):
+
+        """
+        Método que recoge valores de nuestra base de datos sqlite
+        para realizar un informe Clientes.pdf
+        :param boton: Parametro que recibe el metodo
+        :return: None
+        """
 
         global dni,nombre,apellidos,nacimiento,direccion
         dni = self.comboBoxIdCliente.get_active_text()

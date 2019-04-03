@@ -9,6 +9,9 @@ from sqlite3 import dbapi2
 
 class Venta():
     def __init__(self):
+        """
+        :rtype: object
+        """
 
         builder = Gtk.Builder()
         builder.add_from_file("./venta.glade")
@@ -41,6 +44,13 @@ class Venta():
 
 
     def on_btnVenta_clicked(self, boton):
+
+        """
+        Método que recoge valores de nuestra base de datos sqlite
+        para realizar un informe Facturas.pdf
+        :param boton: Parametro que recibe el metodo
+        :return: None
+        """
 
         global cantidade,nombre,apellidos,direccion,descripcion,precio
         self.numFactura = self.comboBoxNumFactura.get_active_text()
@@ -136,6 +146,13 @@ class Venta():
 
 
     def on_btnAñadir_clicked(self, boton):
+
+        """
+        Método que recoge valores introducidos en los entry para almacenarlos en la tabla facturas
+        de nuestra base de datos sqlite
+        :param boton: Parametro que recibe el metodo
+        :return: None
+        """
 
         self.cursor.execute(" insert into facturas values(?,?,?,?) ",
                             (int (self.entryNum.get_text()),
